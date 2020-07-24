@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/styles.css' %}">
+    <title>Blogs</title>
+</head>
+<body> 
+  <section class="headersection">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'blogs:blogpage' %}">BLOGS</a><hr>
+          <div class="navbar-nav ml-auto">
+            {% if request.user.is_authenticated %}<a class="nav-item nav-link" href="#">Hi, {{request.user.first_name.capitalize}}</a>
+             <a class="nav-item nav-link" href="/blogs/createblog/">Add Blogs</a>
+             <a class="nav-item nav-link" href="{% url 'blogs:blogdetails' %}">My Blogs</a>
+             <a class="nav-item nav-link" href="/blogs/logout/">Logout</a>
+            {% else %}
+            <a class="nav-item nav-link" href="/blogs/createauther/">SignUp</a>
+            <a class="nav-item nav-link" href="/blogs/login/">SignIn</a>
+            {%endif%}
+        </div>
+    </nav>
+  </section>
+  <seaction class="viewblogs">
+    {% block content %}
+    
+    {%endblock%}
+  </seaction> 
+
+</body>
+</html>

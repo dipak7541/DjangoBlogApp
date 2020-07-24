@@ -1,0 +1,20 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+<a href="{% url 'blogs:autherupdate' %}" >Update Profile</a><br>
+<hr>
+<h2>My Blogs</h2>
+<hr></hr>
+<div class="alluserblogs">
+{% for blog in allblogs %}
+    <div class="singleblog">
+    Title:{{blog.tittle}}<br>
+    Description:{{blog.description}}<br>
+    Created At:{{blog.created_at}}<br>
+        <a href="{% url 'blogs:deleteblog' blog.id %}">Delete Blog</a>
+        <a href ="{% url 'blogs:blogupdate' %}">Update Blog</a>
+    </div>
+        <hr>
+
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'blogs/base.html' %}
+
+{%block content%}
+    <br>
+    <h2>Please provide blog Details</h2><br><br>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button id="btn" type="submit">Upload</button>
+    </form>
+{%endblock%}

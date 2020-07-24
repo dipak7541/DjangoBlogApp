@@ -1,0 +1,12 @@
+{% extends 'blogs/base.html' %}
+{% block content%}
+<h2>Blogs</h2>
+<hr>
+{% for blog in blogs %}
+    {{blog.tittle}}<br>
+    {{blog.description}}<br>
+    {{blog.created_at}}<br>
+    <a href="{% url 'blogs:deleteblog' blog.id %}">Delete Blog</a>
+    <hr>
+{% endfor %}
+{% endblock %}
